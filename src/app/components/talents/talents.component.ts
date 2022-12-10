@@ -13,6 +13,7 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./talents.component.css'],
 })
 export class TalentsComponent implements OnInit {
+  uri="https://insights-ngy8.onrender.com";
   userId: string;
   talents: talent[] = [];
   totalCount: number;
@@ -52,7 +53,7 @@ export class TalentsComponent implements OnInit {
 
   Delete(Id:string){
 
-    this.http.delete("http://localhost:3000/api/talents/"+Id)
+    this.http.delete(this.uri+"/api/talents/"+Id)
     .subscribe(()=>{
       // this.Tservices.getTalents();
       console.log("inseide delete function");

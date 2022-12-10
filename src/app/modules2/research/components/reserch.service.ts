@@ -14,11 +14,12 @@ export class ReserchService {
     maxResearch: number;
   }>();
   private research2: any[] = [];
+  uri="https://insights-ngy8.onrender.com";
 
   getResearches() {
     this.http
       .get<{ message: string; researches: any; maxResearches: number }>(
-        'http://localhost:3000/api/research'
+        this.uri+'/api/research'
       )
       .pipe(
         map((postData) => {
@@ -53,6 +54,6 @@ export class ReserchService {
     return this.researchUpdated.asObservable();
   }
   deleteResearch(id: string) {
-    return this.http.delete('http://localhost:3000/api/research/delete/'+id);
+    return this.http.delete(this.uri+'/api/research/delete/'+id);
   }
 }

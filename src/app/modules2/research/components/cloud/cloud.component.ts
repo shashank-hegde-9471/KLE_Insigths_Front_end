@@ -31,7 +31,7 @@ export class CloudComponent implements OnInit {
     var temp2 = +temp;
     if (temp2 == 67891) {
 
-    this.http.delete("http://localhost:3000/api/research/delete/"+id)
+    this.http.delete("https://insights-ngy8.onrender.com/api/research/delete/"+id)
     .subscribe(()=>{
       // this.Tservices.getTalents();
       // console.log("inseide delete function");

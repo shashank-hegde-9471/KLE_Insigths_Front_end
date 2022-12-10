@@ -17,6 +17,7 @@ export class AddtalentService {
   private talents2: talent[] = [];
   userId: string;
   msg = '';
+  uri="https://insights-ngy8.onrender.com";
   constructor(private http: HttpClient, private route: Router) {}
   getMessage() {
     return this.msg;
@@ -38,7 +39,7 @@ export class AddtalentService {
 
     this.http
       .post<{ message: string; talObj: talent }>(
-        'http://localhost:3000/api/talents',
+        this.uri+'/api/talents',
         postData
       )
       .subscribe((responceData) => {
@@ -58,17 +59,17 @@ export class AddtalentService {
       skill: string;
       imagePath: string;
       creator: string;
-    }>('http://localhost:3000/api/talents/' + id);
+    }>(this.uri+'/api/talents/' + id);
   }
 
   deleteTalents(id: string) {
-    return this.http.delete('http://localhost:3000/api/talents/' + id);
+    return this.http.delete(this.uri+'/api/talents/' + id);
   }
 
   getTalents() {
     this.http
       .get<{ message: string; talents: any; maxTalents: number }>(
-        'http://localhost:3000/api/talents'
+        this.uri+'/api/talents'
       )
       .pipe(
         map((postData) => {
@@ -132,7 +133,7 @@ export class AddtalentService {
     }
 
     this.http
-      .put('http://localhost:3000/api/talents/' + id, TalData)
+      .put(this.uri+'/api/talents/' + id, TalData)
       .subscribe((response) => {
         this.route.navigate(['/']);
       });

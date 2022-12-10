@@ -23,6 +23,8 @@ export class AddeventsComponent implements OnInit {
     private router: Router
   ) {}
 
+  uri="https://insights-ngy8.onrender.com";
+
   ngOnInit(): void {
 
     var value = prompt('Please enter the unique ID provided to you');
@@ -31,6 +33,7 @@ export class AddeventsComponent implements OnInit {
     const gdsc=12345;
     const gfg=67891;
     const bnb=12340;
+
 
      if( value_ != gdsc)
      {
@@ -57,7 +60,7 @@ export class AddeventsComponent implements OnInit {
     // console.log(this.eventForm.getRawValue());
     this.http
       .post(
-        'http://localhost:3000/api/event/store',
+        this.uri+'/api/event/store',
         this.eventForm.getRawValue()
       )
       .subscribe(() => {

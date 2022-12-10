@@ -13,10 +13,11 @@ export class EventSService {
 
   private eventUpdated = new Subject<{events:Event[],EventCount:number}>();
   private event2:any[]=[];
+  uri="https://insights-ngy8.onrender.com";
 
   getEvents( ){
 
-    this.http.get<{message:string,events:any,maxEvents:number}>('http://localhost:3000/api/event' )
+    this.http.get<{message:string,events:any,maxEvents:number}>(this.uri+'/api/event' )
     .pipe(map((postData)=>{
       // console.log(postData);
       return {posts : postData.events.map((post:any)=>{
@@ -43,6 +44,6 @@ export class EventSService {
   }
   deleteEvents(id:string)
   {
-    return this.http.delete("http://localhost:3000/api/event/delete/"+id);
+    return this.http.delete(this.uri+"/api/event/delete/"+id);
   }
 }

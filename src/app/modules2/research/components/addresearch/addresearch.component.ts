@@ -19,7 +19,7 @@ export class AddresearchComponent implements OnInit {
   ResearchForm!: FormGroup;
   msg = '';
 
-
+  uri="https://insights-ngy8.onrender.com";
 
 
   ngOnInit(): void {
@@ -29,6 +29,7 @@ export class AddresearchComponent implements OnInit {
     // if (value_ != 456) {
     //   this.router.navigate(['/Research']);
     // }
+
 
        var value = prompt('Please enter the unique ID provided to you');
     var value_:number = +value;
@@ -58,7 +59,7 @@ export class AddresearchComponent implements OnInit {
     // console.log(this.eventForm.getRawValue());
     this.http
       .post(
-        'http://localhost:3000/api/research/addResearch',
+        this.uri+'/api/research/addResearch',
         this.ResearchForm.getRawValue()
       )
       .subscribe(() => {
