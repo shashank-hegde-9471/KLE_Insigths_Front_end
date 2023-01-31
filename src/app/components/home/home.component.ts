@@ -39,15 +39,7 @@ export class HomeComponent implements OnInit {
       subtitle: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
     }
 
-    this.http.get<{articles:any[]}>('https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=929e8ec8ec8b4d6d9f68f69dab95ee27')
-    .subscribe(result=>{
-      this.arr=result.articles
-
-      this.arr.forEach(ele=>{
-         this.arr2.push(ele.title);
-      })
-
-    })
+   
 
   }
 
